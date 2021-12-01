@@ -169,10 +169,11 @@ media queries
     width: 100%;
     margin-bottom: 10px;
   }
-
+  
   .sound button{
     width: 100%;
     background-color: var(--col-med-blue);
+    border: none;   
   }
 
   .sound h4{
