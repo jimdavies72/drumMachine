@@ -11,6 +11,7 @@ const soundsArray = [
 ];
 
 const soundbar = document.querySelector(".soundbar")
+const drumKit = document.getElementById("drum-kit")
 
 //populate the sound bar
 for(let i = 0; i < soundsArray.length; i++){
@@ -31,6 +32,14 @@ let playAudio = (soundPath) => {
   audio.play();
 }
 
+// shake the drum kit image
+const shakeDrumKit = (shakeLength) => {
+  drumKit.classList.add("shake");
+  setTimeout(() => {
+    drumKit.classList.remove("shake");
+  }, shakeLength);
+}
+
 // Set up button array for clicks
 const btns = document.querySelectorAll(".sound-btn");
 
@@ -39,10 +48,9 @@ btns.forEach((btn) => {
     let btnClass = e.currentTarget.classList;
     let soundPath = `./media/${btnClass[1]}.wav`
     playAudio(soundPath);
-    
+    shakeDrumKit(500);
   });
 });
-
 
 // Get the keypresses
 document.addEventListener("keypress", (e) =>{
@@ -51,6 +59,7 @@ document.addEventListener("keypress", (e) =>{
       //play audio
       let soundPath = `./media/${soundsArray[i][1]}.wav`;
       playAudio(soundPath)
+      shakeDrumKit(500);
     }
   }
 })

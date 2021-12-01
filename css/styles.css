@@ -29,7 +29,9 @@ html {
 
 :root{
   --ff-primary: "Roboto", sans-serif;
+  --col-light-blue: lightskyblue;
   --col-med-blue: mediumblue;
+  --col-dark-blue: blue;
   --light-shadow: 22px 22px 15px -10px rgba(0,0,0,0.28);
   --dark-shadow: 22px 22px 15px -10px rgba(0,0,0,0.66);
   --transition-slow: 1s;
@@ -62,7 +64,6 @@ p{
 }
 
 
-
 /* 
 ----------------
 Drum Machine Project
@@ -70,7 +71,7 @@ Drum Machine Project
 */
 
 .wrapper{
-  background-color: lightskyblue;
+  background-color: var(--col-light-blue);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -96,8 +97,6 @@ Drum Machine Project
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 2px;
 }
 
 .sound h4{
@@ -106,12 +105,12 @@ Drum Machine Project
   
 }
 .sound button{
-  background-color: blue;
+  background-color: var(--col-dark-blue);
   color: white;
-  border-top: 5px solid black;  
-  font-size: 2rem;
   border: none;
-  padding: 3px;
+  border-top: 1px solid black;  
+  font-size: 2rem;
+  padding: 5px;
   transition: var(--transition-vfast) ;
 }
 
@@ -121,11 +120,11 @@ Drum Machine Project
 }
 
 .drums{
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .drums img{
-  border: 1px solid blue;
+  border: 1px solid var(--col-dark-blue);
   border-radius: 10px;
   box-shadow: var(--dark-shadow);
 }
@@ -134,7 +133,7 @@ Drum Machine Project
 /* attempted to make the image shake on click.keypress, but lifes too short */
 
 .shake{
-  animation: shake 1s;
+  animation: shake 1s forwards;
 }
 
 @keyframes shake {
