@@ -130,8 +130,6 @@ Drum Machine Project
 }
 
 
-/* attempted to make the image shake on click.keypress, but lifes too short */
-
 .shake{
   animation: shake 1s forwards;
 }
