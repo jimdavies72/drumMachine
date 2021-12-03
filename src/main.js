@@ -12,6 +12,7 @@ const soundsArray = [
 
 const soundbar = document.querySelector(".soundbar")
 const drumKit = document.getElementById("drum-kit")
+const defaultMediaPath = "./media/"
 
 //populate the sound bar
 for(let i = 0; i < soundsArray.length; i++){
@@ -26,9 +27,37 @@ for(let i = 0; i < soundsArray.length; i++){
   soundbar.innerHTML += html;
 }
 
+// Set up button array for clicks
+const btns = document.querySelectorAll(".sound-btn");
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let btnClass = e.currentTarget.classList;
+    playDrum(btnClass[1]);
+  });
+});
+
+// Get the keypresses
+document.addEventListener("keypress", (e) =>{
+  for (let i = 0; i < soundsArray.length; i++){
+    if( soundsArray[i][0].toUpperCase() == e.key.toUpperCase()){
+      playDrum(soundsArray[i][1]);
+    }
+  }
+})
+
+const playDrum = (sound) => {
+  //play audio
+  playAudio(`${sound}.wav`);
+  //shake the boss drum
+  shakeDrumKit(500);
+}
+
 // play audio function
 let playAudio = (soundPath) => {
-  let audio = new Audio(soundPath);
+  let audio = new Audio(`${defaultMediaPath}${soundPath}`);
+  // reset the audio play position to 0 to allow for key overlap
+  audio.currentTime = 0;
   audio.play();
 }
 
@@ -39,27 +68,3 @@ const shakeDrumKit = (shakeLength) => {
     drumKit.classList.remove("shake");
   }, shakeLength);
 }
-
-// Set up button array for clicks
-const btns = document.querySelectorAll(".sound-btn");
-
-btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    let btnClass = e.currentTarget.classList;
-    let soundPath = `./media/${btnClass[1]}.wav`
-    playAudio(soundPath);
-    shakeDrumKit(500);
-  });
-});
-
-// Get the keypresses
-document.addEventListener("keypress", (e) =>{
-  for (let i = 0; i < soundsArray.length; i++){
-    if( soundsArray[i][0].toUpperCase() == e.key.toUpperCase()){
-      //play audio
-      let soundPath = `./media/${soundsArray[i][1]}.wav`;
-      playAudio(soundPath)
-      shakeDrumKit(500);
-    }
-  }
-})
