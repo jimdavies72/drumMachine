@@ -1,2 +1,3 @@
 # drumMachine
-Drum MAchine Challenge
+
+Code Nation Week 3 Project: A simple Drum Machine app.
