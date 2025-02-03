@@ -7,6 +7,8 @@
 ### Description
 This repo represents the code that implements a simple keyboard operated drum machine application.
 
+View the end product here: [Drum Machine](https://jimdavies72.github.io/drumMachine/)
+
 ### Project Tech Stack:
 
 - HTML 5
